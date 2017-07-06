@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+
+
+    <title>Event-A-Mom - {% block title %}Find fun here!{% endblock %}</title>
+</head>
+
+<body>
+
+    <div>
+        <div>
+            <div>
+                {% block header_block %}
+                {% endblock %}
+                <br>
+                <a href="/eventamom/">Event A Mom</a><br>
+                <div>
+                    <ul>
+                        {% if user.is_authenticated %}
+                            <li>Welcome, {{ user.username }}!</li>
+                            <!--<li><a href="/eventamom/logout/">Logout</a>-->
+                        {% else %}
+                             <li><a href="/eventamom/register/">Register</a></li>
+                             <!-- <li><a href="/eventamom/login/">Login</a></li>-->
+                        {% endif %}
+                    </ul>
+                </div>
+        </div>
+    </div>
+        <div>
+            {% block body_block %}
+            {% endblock %}
+
+        </div>
+
+    </div>
+<hr>
+<footer>
+    <div>
+        <p>Event-A-Mom: Where the fun begins 2017</p>
+    </div>
+</footer>
+
+
+<hr/>
+</body>
+</html>

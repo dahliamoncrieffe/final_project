@@ -1,0 +1,42 @@
+{% extends "event_a_mom/base.html" %}
+
+{% block title %}Register with Event-a-Mom{% endblock %}
+
+{% block body_block %}
+<div>
+    <h1>Register with Event-A-Mom</h1>
+    <br/>
+
+    <div>
+        {% if registered %}
+        <p> Thank you for registering.
+
+        <p><a href="/eventamom/login/">Login</a> when you are ready to find events.</p>
+        {% else %}
+
+        <form id="user_form" method="post" action="/event_a_mom/register/"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Sign up Here</h2>
+
+            {% for field in user_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text}}<br/>
+            {{ field }}<br/>
+            {% endfor %}
+
+
+            {% for field in profile_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text}}<br/>
+            {{ field }}<br/>
+            {% endfor %}
+
+            <br/>
+            <!-- Provide a button to click to submit the form. -->
+            <input type="submit" name="submit" value="Register"/>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

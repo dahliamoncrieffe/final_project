@@ -1,0 +1,28 @@
+{% extends "event_a_mom/base.html" %}
+
+{% block title %}Welcome to Event-a-Mom!{% endblock %}
+
+{% block body_block %}
+<div>
+    <h1>Let's Find Some Fun!!</h1>
+    <p>Find, Add, Share and Rango useful links and resources.</p>
+</div>
+
+<div>
+    <div>
+        <h2>Hottest Events</h2>
+        {% if events %}
+        <ul>
+            {% for event in events %}
+            <li><a href="/event_a_mom/event/{{ evemt.url }}">{{ event.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <strong>No Events at this time.</strong>
+        {% endif %}
+
+    </div>
+</div>
+
+
+{% endblock %}

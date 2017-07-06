@@ -1,0 +1,22 @@
+{% extends "event_a_mom/base.html" %}
+
+{% block title %} sign-up {% endblock %}
+
+{% block header_block %} Welcome Potential User! {% endblock %}
+
+{% block body_block %}
+    {% if error %}
+        {{ error }}
+    {% endif %}
+        <form method=post action="users/signup/">{% csrf_token %}
+        <label>Email:</label>
+        <input type="text" name="email" placeholder="Email"><br>
+        <label>User Name:</label>
+        <input type="text" name="username" placeholder="User Name"><br>
+        <label>Password:</label>
+        <input type="text" name="password1" placeholder="Password"><br>
+        <label>Re-Enter Password:</label>
+        <input type="text" name="password2" placeholder="Re-Enter Password"><br>
+        <input type="submit" value="signup">
+        </form>
+{% endblock %}

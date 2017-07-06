@@ -1,0 +1,32 @@
+{% extends "event_a_mom/base.html" %}
+
+{% block title %}Add a New Event{% endblock %}
+
+{% block body_block %}
+<div>
+    <h1>Add an Event</h1>
+    <br/>
+
+    <div>
+
+        <form id="event_form" method="post" action="/event_a_mom/add_event/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text}}<br/>
+            {{ field }}
+            {% endfor %}
+
+            <br/>
+            <input type="submit" name="submit" value="Create Event"/>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}
